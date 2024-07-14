@@ -1,0 +1,23 @@
+Project Name,Package Name,Type Name,NOF,NOPF,NOM,NOPM,LOC,WMC,NC,DIT,LCOM,FANIN,FANOUT,File path,Line no
+reactive,hu.akarnokd.reactive.lowalloc,LcObservableJust,2,0,5,2,27,7,0,2,0.0,0,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcObservableJust.java,5
+reactive,hu.akarnokd.reactive.lowalloc,LcObservableRange,3,0,5,2,31,8,0,2,0.0,0,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcObservableRange.java,5
+reactive,hu.akarnokd.reactive.lowalloc,LcObservableMap,3,0,9,6,34,9,0,2,0.4444444444444444,0,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcObservableMap.java,7
+reactive,hu.akarnokd.reactive.lowalloc,LcSourceObservable,2,0,3,1,14,4,2,1,0.0,2,0,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcSourceObservable.java,8
+reactive,hu.akarnokd.reactive.lowalloc,LcObservable,0,0,4,4,15,5,2,0,-1.0,1,0,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcObservable.java,7
+reactive,hu.akarnokd.reactive.lowalloc,LcIntermediateObservable,3,0,3,1,18,4,1,1,0.0,0,0,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/lowalloc/LcIntermediateObservable.java,7
+reactive,hu.akarnokd.reactive.observables,IObservable,0,0,16,0,155,28,0,0,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,9
+reactive,hu.akarnokd.reactive.observables,IObservable.ConcatObserver,6,0,0,0,45,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,173
+reactive,hu.akarnokd.reactive.observables,IObservable.Collector,5,0,0,0,38,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,229
+reactive,hu.akarnokd.reactive.observables,IObservable.FlatMapper,4,0,0,0,41,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,278
+reactive,hu.akarnokd.reactive.observables,IObservable.Mapper,4,0,0,0,36,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,330
+reactive,hu.akarnokd.reactive.observables,IObservable.Filterer,4,0,0,0,38,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,377
+reactive,hu.akarnokd.reactive.observables,IObservable.SumInt,4,0,0,0,27,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,426
+reactive,hu.akarnokd.reactive.observables,IObservable.SumLong,4,0,0,0,27,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,465
+reactive,hu.akarnokd.reactive.observables,IObservable.MaxInt,4,0,0,0,27,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,504
+reactive,hu.akarnokd.reactive.observables,IObservable.Take,5,0,0,0,35,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,543
+reactive,hu.akarnokd.reactive.observables,IObservable.Skip,5,0,0,0,31,0,0,1,-1.0,0,2,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,590
+reactive,hu.akarnokd.reactive.observables,IObservable.First,4,0,0,0,25,0,0,1,-1.0,0,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,633
+reactive,hu.akarnokd.reactive.observables,IObservable.Last,4,0,0,0,24,0,0,1,-1.0,0,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObservable.java,669
+reactive,hu.akarnokd.reactive.observables,IDisposable,0,0,1,0,3,1,11,0,-1.0,13,0,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IDisposable.java,3
+reactive,hu.akarnokd.reactive.observables,IObserver,0,0,5,0,7,5,12,0,-1.0,11,1,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/IObserver.java,3
+reactive,hu.akarnokd.reactive.observables,BooleanDisposable,1,0,2,2,9,2,0,1,0.0,1,0,/Users/krish/git/csci3130/assn3/akarnokd-misc/src/main/java/hu/akarnokd/reactive/observables/BooleanDisposable.java,3

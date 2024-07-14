@@ -1,0 +1,18 @@
+Project Name,Package Name,Type Name,Testability Smell,Cause of the Smell
+akarnokd-misc,hu.akarnokd.rxjava3,BufferStartStop.BufferWithTimeout,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava2,CustomFlowableTest.CustomFlowable,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava2,PersonSeq.Person,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava2,NoWebMain.LongCouple,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava2,RxSynchronousProfiler.CallStatistics,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava,TransactionSubjectPlaypen.TestTransactionObserver,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.rxjava,TransactionSubjectPlaypen.TestTransaction,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,(default package),GroupByConcatMapTest.Shop,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,(default package),GroupByConcatMapTest.Coordinate,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.misc,BoxOColor.Board,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.misc,BoxOColor.Game,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.misc,ParallelPrinter.Print,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.reactive.lowalloc,LcSourceObservable,Law of Demeter violation,The tool detected the smell in this method (subscribe) because the method voilates the law of Demeter. The long chain of method invocations is : hu.akarnokd.reactive.lowalloc.LcSourceObservable.createFresh; hu.akarnokd.reactive.lowalloc.LcSourceObservable.subscribeActual
+akarnokd-misc,hu.akarnokd.comparison,PublisherFlatMapPerf.Regular,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.comparison,PublisherFlatMapPerf.CrossRange,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.comparison,ObservableFlatMapPerf.Regular,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.
+akarnokd-misc,hu.akarnokd.comparison,ObservableFlatMapPerf.CrossRange,Global State,The tool detected the smell in this class because the class can be accessed as a `global` state.

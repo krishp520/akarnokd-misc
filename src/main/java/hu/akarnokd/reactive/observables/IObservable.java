@@ -45,71 +45,8 @@ public interface IObservable<T> {
 
     @SafeVarargs
     static <T> IObservable<T> concatArray(IObservable<T>... sources) {
-        class ConcatObserver implements IObserver<T>, IDisposable {
-
-            final IObserver<? super T> o;
-
-            ConcatObserver(IObserver<? super T> o) {
-                this.o = o;
-            }
-
-            IDisposable d;
-
-            boolean disposed;
-
-            int wip;
-
-            int index;
-
-            @Override
-            public void dispose() {
-                disposed = true;
-                d.dispose();
-            }
-
-            @Override
-            public void onSubscribe(IDisposable d) {
-                if (disposed) {
-                    d.dispose();
-                } else {
-                    this.d = d;
-                }
-            }
-
-            @Override
-            public void onNext(T element) {
-                o.onNext(element);
-            }
-
-            @Override
-            public void onError(Throwable cause) {
-                o.onError(cause);
-            }
-
-            @Override
-            public void onComplete() {
-                if (wip++ == 0) {
-                    do {
-                        if (disposed) {
-                            return;
-                        }
-
-                        if (index == sources.length) {
-                            o.onComplete();
-                            return;
-                        }
-
-                        sources[index++].subscribe(this);
-                    } while (--wip != 0);
-                }
-            }
-
-        }
-
         return o -> {
-
-            ConcatObserver obs = new ConcatObserver(o);
-
+            ConcatObserver<T> obs = new ConcatObserver<>(o, sources);
             o.onSubscribe(obs);
             obs.onComplete();
         };
@@ -134,7 +71,6 @@ public interface IObservable<T> {
     default <C> IObservable<C> collect(Callable<C> collectionSupplier, BiConsumer<? super C, ? super T> collector) {
         return o -> {
             C collection;
-
             try {
                 collection = collectionSupplier.call();
             } catch (Throwable ex) {
@@ -143,511 +79,624 @@ public interface IObservable<T> {
                 o.onError(ex);
                 return;
             }
-
-            class Collector implements IObserver<T>, IDisposable {
-
-                IDisposable d;
-
-                boolean disposed;
-
-                @Override
-                public void dispose() {
-                    disposed = true;
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(T element) {
-                    try {
-                        collector.accept(collection, element);
-                    } catch (Throwable ex) {
-                        dispose();
-                        o.onError(ex);
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    o.onNext(collection);
-                    if (!disposed) {
-                        o.onComplete();
-                    }
-                }
-
-            }
-
-            subscribe(new Collector());
+            Collector<T, C> collectorObserver = new Collector<>(o, collection, collector);
+            subscribe(collectorObserver);
         };
     }
 
     default <R> IObservable<R> flatMapIterable(Function<? super T, ? extends Iterable<? extends R>> mapper) {
         return o -> {
-            class FlatMapper implements IObserver<T>, IDisposable {
-                IDisposable d;
-
-                boolean disposed;
-
-                @Override
-                public void dispose() {
-                    disposed = true;
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(T element) {
-                    Iterator<? extends R> it;
-
-                    try {
-                        it = mapper.apply(element).iterator();
-                    } catch (Throwable ex) {
-                        dispose();
-                        o.onError(ex);
-                        return;
-                    }
-
-                    while (it.hasNext()) {
-                        if (disposed) {
-                            break;
-                        }
-                        o.onNext(it.next());
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    o.onComplete();
-                }
-            }
-            subscribe(new FlatMapper());
+            FlatMapper<T, R> flatMapper = new FlatMapper<>(o, mapper);
+            subscribe(flatMapper);
         };
     }
 
     default <R> IObservable<R> map(Function<? super T, ? extends R> mapper) {
         return o -> {
-            class Mapper implements IObserver<T>, IDisposable {
-                IDisposable d;
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(T element) {
-                    R v;
-
-                    try {
-                        v = mapper.apply(element);
-                    } catch (Throwable ex) {
-                        dispose();
-                        o.onError(ex);
-                        return;
-                    }
-
-                    o.onNext(v);
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    o.onComplete();
-                }
-            }
-            subscribe(new Mapper());
+            Mapper<T, R> mapperObserver = new Mapper<>(o, mapper);
+            subscribe(mapperObserver);
         };
     }
 
     default IObservable<T> filter(Predicate<? super T> predicate) {
         return o -> {
-            class Filterer implements IObserver<T>, IDisposable {
-                IDisposable d;
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(T element) {
-                    boolean v;
-
-                    try {
-                        v = predicate.test(element);
-                    } catch (Throwable ex) {
-                        dispose();
-                        o.onError(ex);
-                        return;
-                    }
-
-                    if (v) {
-                        o.onNext(element);
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    o.onComplete();
-                }
-            }
-            subscribe(new Filterer());
+            Filterer<T> filterer = new Filterer<>(o, predicate);
+            subscribe(filterer);
         };
     }
 
     @SuppressWarnings("unchecked")
     default IObservable<Integer> sumInt() {
         return o -> {
-            class SumInt implements IObserver<Number>, IDisposable {
-                IDisposable d;
-
-                int sum;
-                boolean hasValue;
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(Number element) {
-                    if (!hasValue) {
-                        hasValue = true;
-                    }
-                    sum += element.intValue();
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    if (hasValue) {
-                        o.onNext(sum);
-                    }
-                    o.onComplete();
-                }
-            }
-            ((IObservable<Number>)this).subscribe(new SumInt());
+            SumInt sumIntObserver = new SumInt(o);
+            ((IObservable<Number>) this).subscribe(sumIntObserver);
         };
     }
 
     @SuppressWarnings("unchecked")
     default IObservable<Long> sumLong() {
         return o -> {
-            class SumLong implements IObserver<Number>, IDisposable {
-                IDisposable d;
-
-                long sum;
-                boolean hasValue;
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(Number element) {
-                    if (!hasValue) {
-                        hasValue = true;
-                    }
-                    sum += element.longValue();
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    if (hasValue) {
-                        o.onNext(sum);
-                    }
-                    o.onComplete();
-                }
-            }
-            ((IObservable<Number>)this).subscribe(new SumLong());
+            SumLong sumLongObserver = new SumLong(o);
+            ((IObservable<Number>) this).subscribe(sumLongObserver);
         };
     }
 
     @SuppressWarnings("unchecked")
     default IObservable<Integer> maxInt() {
         return o -> {
-            class MaxInt implements IObserver<Number>, IDisposable {
-                IDisposable d;
-
-                int max;
-                boolean hasValue;
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(Number element) {
-                    if (!hasValue) {
-                        hasValue = true;
-                        max = element.intValue();
-                    } else {
-                        max = Math.max(max, element.intValue());
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    if (hasValue) {
-                        o.onNext(max);
-                    }
-                    o.onComplete();
-                }
-            }
-            ((IObservable<Number>)this).subscribe(new MaxInt());
+            MaxInt maxIntObserver = new MaxInt(o);
+            ((IObservable<Number>) this).subscribe(maxIntObserver);
         };
     }
 
     default IObservable<T> take(long n) {
         return o -> {
-            class Take implements IObserver<T>, IDisposable {
-                IDisposable d;
-
-                long remaining;
-
-                Take(long n) {
-                    this.remaining = n;
-                }
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                    if (remaining == 0) {
-                        d.dispose();
-                    }
-                }
-
-                @Override
-                public void onNext(T element) {
-                    long r = remaining;
-                    if (r > 0) {
-                        remaining = --r;
-                        o.onNext(element);
-                        if (r == 0) {
-                            dispose();
-                            o.onComplete();
-                        }
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    if (remaining > 0) {
-                        o.onError(cause);
-                    }
-                }
-
-                @Override
-                public void onComplete() {
-                    if (remaining > 0) {
-                        o.onComplete();
-                    }
-                }
-            }
-            subscribe(new Take(n));
+            Take<T> takeObserver = new Take<>(o, n);
+            subscribe(takeObserver);
         };
     }
 
     default IObservable<T> skip(long n) {
         return o -> {
-            class Skip implements IObserver<T>, IDisposable {
-                IDisposable d;
-
-                long remaining;
-
-                Skip(long n) {
-                    this.remaining = n;
-                }
-
-                @Override
-                public void dispose() {
-                    d.dispose();
-                }
-
-                @Override
-                public void onSubscribe(IDisposable d) {
-                    this.d = d;
-                    o.onSubscribe(this);
-                }
-
-                @Override
-                public void onNext(T element) {
-                    long r = remaining;
-                    if (r == 0) {
-                        o.onNext(element);
-                    } else {
-                        remaining = r - 1;
-                    }
-                }
-
-                @Override
-                public void onError(Throwable cause) {
-                    o.onError(cause);
-                }
-
-                @Override
-                public void onComplete() {
-                    o.onComplete();
-                }
-            }
-            subscribe(new Skip(n));
+            Skip<T> skipObserver = new Skip<>(o, n);
+            subscribe(skipObserver);
         };
     }
 
     default T first() {
-        class First implements IObserver<T> {
-            T item;
-
-            Throwable error;
-
-            IDisposable d;
-
-            @Override
-            public void onSubscribe(IDisposable d) {
-                this.d = d;
-            }
-
-            @Override
-            public void onNext(T element) {
-                item = element;
-                d.dispose();
-            }
-
-            @Override
-            public void onError(Throwable cause) {
-                error = cause;
-            }
-
-            @Override
-            public void onComplete() {
-            }
+        First<T> firstObserver = new First<>();
+        subscribe(firstObserver);
+        if (firstObserver.error != null) {
+            throw ExceptionHelper.wrapOrThrow(firstObserver.error);
         }
-
-        First f = new First();
-        subscribe(f);
-        if (f.error != null) {
-            throw ExceptionHelper.wrapOrThrow(f.error);
-        }
-        if (f.item == null) {
+        if (firstObserver.item == null) {
             throw new NoSuchElementException();
         }
-        return f.item;
+        return firstObserver.item;
     }
 
     default T last() {
-        class Last implements IObserver<T> {
-            T item;
-
-            Throwable error;
-
-            @Override
-            public void onSubscribe(IDisposable d) {
-            }
-
-            @Override
-            public void onNext(T element) {
-                item = element;
-            }
-
-            @Override
-            public void onError(Throwable cause) {
-                error = cause;
-            }
-
-            @Override
-            public void onComplete() {
-            }
+        Last<T> lastObserver = new Last<>();
+        subscribe(lastObserver);
+        if (lastObserver.error != null) {
+            throw ExceptionHelper.wrapOrThrow(lastObserver.error);
         }
-
-        Last f = new Last();
-        subscribe(f);
-        if (f.error != null) {
-            throw ExceptionHelper.wrapOrThrow(f.error);
-        }
-        if (f.item == null) {
+        if (lastObserver.item == null) {
             throw new NoSuchElementException();
         }
-        return f.item;
+        return lastObserver.item;
+    }
+}
+
+// Separate classes for observers
+
+class ConcatObserver<T> implements IObserver<T>, IDisposable {
+    final IObserver<? super T> o;
+    final IObservable<T>[] sources;
+
+    IDisposable d;
+    boolean disposed;
+    int wip;
+    int index;
+
+    ConcatObserver(IObserver<? super T> o, IObservable<T>[] sources) {
+        this.o = o;
+        this.sources = sources;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        if (disposed) {
+            d.dispose();
+        } else {
+            this.d = d;
+        }
+    }
+
+    @Override
+    public void onNext(T element) {
+        o.onNext(element);
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        if (wip++ == 0) {
+            do {
+                if (disposed) {
+                    return;
+                }
+                if (index == sources.length) {
+                    o.onComplete();
+                    return;
+                }
+                sources[index++].subscribe(this);
+            } while (--wip != 0);
+        }
+    }
+}
+
+class Collector<T, C> implements IObserver<T>, IDisposable {
+    final IObserver<? super C> o;
+    final C collection;
+    final BiConsumer<? super C, ? super T> collector;
+    IDisposable d;
+    boolean disposed;
+
+    Collector(IObserver<? super C> o, C collection, BiConsumer<? super C, ? super T> collector) {
+        this.o = o;
+        this.collection = collection;
+        this.collector = collector;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        try {
+            collector.accept(collection, element);
+        } catch (Throwable ex) {
+            dispose();
+            o.onError(ex);
+        }
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onNext(collection);
+        if (!disposed) {
+            o.onComplete();
+        }
+    }
+}
+
+class FlatMapper<T, R> implements IObserver<T>, IDisposable {
+    final IObserver<? super R> o;
+    final Function<? super T, ? extends Iterable<? extends R>> mapper;
+    IDisposable d;
+    boolean disposed;
+
+    FlatMapper(IObserver<? super R> o, Function<? super T, ? extends Iterable<? extends R>> mapper) {
+        this.o = o;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        Iterator<? extends R> it;
+        try {
+            it = mapper.apply(element).iterator();
+        } catch (Throwable ex) {
+            dispose();
+            o.onError(ex);
+            return;
+        }
+        while (it.hasNext()) {
+            if (disposed) {
+                break;
+            }
+            o.onNext(it.next());
+        }
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onComplete();
+    }
+}
+
+class Mapper<T, R> implements IObserver<T>, IDisposable {
+    final IObserver<? super R> o;
+    final Function<? super T, ? extends R> mapper;
+    IDisposable d;
+    boolean disposed;
+
+    Mapper(IObserver<? super R> o, Function<? super T, ? extends R> mapper) {
+        this.o = o;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        R result;
+        try {
+            result = mapper.apply(element);
+        } catch (Throwable ex) {
+            dispose();
+            o.onError(ex);
+            return;
+        }
+        o.onNext(result);
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onComplete();
+    }
+}
+
+class Filterer<T> implements IObserver<T>, IDisposable {
+    final IObserver<? super T> o;
+    final Predicate<? super T> predicate;
+    IDisposable d;
+    boolean disposed;
+
+    Filterer(IObserver<? super T> o, Predicate<? super T> predicate) {
+        this.o = o;
+        this.predicate = predicate;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        boolean b;
+        try {
+            b = predicate.test(element);
+        } catch (Throwable ex) {
+            dispose();
+            o.onError(ex);
+            return;
+        }
+        if (b) {
+            o.onNext(element);
+        }
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onComplete();
+    }
+}
+
+class SumInt implements IObserver<Number>, IDisposable {
+    final IObserver<? super Integer> o;
+    IDisposable d;
+    boolean disposed;
+    int sum;
+
+    SumInt(IObserver<? super Integer> o) {
+        this.o = o;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(Number element) {
+        sum += element.intValue();
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onNext(sum);
+        o.onComplete();
+    }
+}
+
+class SumLong implements IObserver<Number>, IDisposable {
+    final IObserver<? super Long> o;
+    IDisposable d;
+    boolean disposed;
+    long sum;
+
+    SumLong(IObserver<? super Long> o) {
+        this.o = o;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(Number element) {
+        sum += element.longValue();
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onNext(sum);
+        o.onComplete();
+    }
+}
+
+class MaxInt implements IObserver<Number>, IDisposable {
+    final IObserver<? super Integer> o;
+    IDisposable d;
+    boolean disposed;
+    int max = Integer.MIN_VALUE;
+
+    MaxInt(IObserver<? super Integer> o) {
+        this.o = o;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(Number element) {
+        max = Math.max(max, element.intValue());
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onNext(max);
+        o.onComplete();
+    }
+}
+
+class Take<T> implements IObserver<T>, IDisposable {
+    final IObserver<? super T> o;
+    final long n;
+    IDisposable d;
+    boolean disposed;
+    long remaining;
+
+    Take(IObserver<? super T> o, long n) {
+        this.o = o;
+        this.n = n;
+        this.remaining = n;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        if (remaining-- > 0) {
+            o.onNext(element);
+        }
+        if (remaining == 0) {
+            onComplete();
+        }
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onComplete();
+        dispose();
+    }
+}
+
+class Skip<T> implements IObserver<T>, IDisposable {
+    final IObserver<? super T> o;
+    final long n;
+    IDisposable d;
+    boolean disposed;
+    long remaining;
+
+    Skip(IObserver<? super T> o, long n) {
+        this.o = o;
+        this.n = n;
+        this.remaining = n;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+        o.onSubscribe(this);
+    }
+
+    @Override
+    public void onNext(T element) {
+        if (remaining-- <= 0) {
+            o.onNext(element);
+        }
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        o.onError(cause);
+    }
+
+    @Override
+    public void onComplete() {
+        o.onComplete();
+    }
+}
+
+class First<T> implements IObserver<T> {
+    T item;
+    Throwable error;
+    IDisposable d;
+    boolean disposed;
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+    }
+
+    @Override
+    public void onNext(T element) {
+        item = element;
+        onComplete();
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        error = cause;
+    }
+
+    @Override
+    public void onComplete() {
+        if (d != null) {
+            d.dispose();
+        }
+    }
+}
+
+class Last<T> implements IObserver<T> {
+    T item;
+    Throwable error;
+    IDisposable d;
+    boolean disposed;
+
+    @Override
+    public void dispose() {
+        disposed = true;
+        d.dispose();
+    }
+
+    @Override
+    public void onSubscribe(IDisposable d) {
+        this.d = d;
+    }
+
+    @Override
+    public void onNext(T element) {
+        item = element;
+    }
+
+    @Override
+    public void onError(Throwable cause) {
+        error = cause;
+    }
+
+    @Override
+    public void onComplete() {
+        if (d != null) {
+            d.dispose();
+        }
     }
 }
