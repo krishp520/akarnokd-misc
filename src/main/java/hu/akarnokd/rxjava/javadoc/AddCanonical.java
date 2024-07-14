@@ -16,10 +16,25 @@ public final class AddCanonical {
 
     static final Map<String, String> canonicals = new HashMap<>();
 
-    static void init() {
-        // ----------------------------------------------------------------------------------
-        Map<String, String> canonicals = new HashMap<>();
 
+    public static void init() {
+        addObservableMappings();
+        addObserverMappings();
+        addSchedulerMappings();
+        addPluginMappings();
+        addBackpressureMappings();
+        addAnnotationMappings();
+        addExceptionMappings();
+        addFunctionMappings();
+        addObservableTypeMappings();
+        addSubscriptionMappings();
+        addSingleMappings();
+        addCompletableMappings();
+
+        checkUrls();
+    }
+
+    private static void addObservableMappings() {
         canonicals.put("/rx/Observable.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Flowable.html");
         canonicals.put("/rx/Observable.OnSubscribe.html",
@@ -32,16 +47,18 @@ public final class AddCanonical {
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/FlowableSubscriber.html");
         canonicals.put("/rx/Emitter.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/FlowableEmitter.html");
+    }
 
-        // ----------------------------------------------------------------------------------
-
+    private static void addObserverMappings() {
         canonicals.put("/rx/Observer.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Observer.html");
         canonicals.put("/rx/Subscription.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/Disposable.html");
         canonicals.put("/rx/Notification.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Notification.html");
+    }
 
+    private static void addSchedulerMappings() {
         canonicals.put("/rx/Scheduler.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Scheduler.html");
         canonicals.put("/rx/Scheduler.Worker.html",
@@ -56,7 +73,9 @@ public final class AddCanonical {
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/schedulers/Timed.html");
         canonicals.put("/rx/scheduler/TrampolineScheduler.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/schedulers/Schedulers.html#trampoline%28%29");
+    }
 
+    private static void addPluginMappings() {
         canonicals.put("/rx/plugins/RxJavaPlugins.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/plugins/RxJavaPlugins.html");
         canonicals.put("/rx/plugins/RxJavaHooks.html",
@@ -69,24 +88,27 @@ public final class AddCanonical {
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/plugins/RxJavaPlugins.html");
         canonicals.put("/rx/plugins/RxJavaSchedulersHook.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/plugins/RxJavaPlugins.html");
+    }
 
+    private static void addBackpressureMappings() {
         canonicals.put("/rx/BackpressureOverflow.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/BackpressureOverflowStrategy.html");
         canonicals.put("/rx/BackpressureOverflow.Strategy.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/BackpressureOverflowStrategy.html");
-
         canonicals.put("/rx/Emitter.BackpressureMode.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/BackpressureStrategy.html");
-
         canonicals.put("/rx/Producer.html",
                 "http://www.reactive-streams.org/reactive-streams-1.0.0-javadoc/org/reactivestreams/Subscription.html");
+    }
 
+    private static void addAnnotationMappings() {
         canonicals.put("/rx/annotations/Beta.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/annotations/Beta.html");
-
         canonicals.put("/rx/annotations/Experimental.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/annotations/Experimental.html");
+    }
 
+    private static void addExceptionMappings() {
         canonicals.put("/rx/exceptions/Exceptions.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/exceptions/Exceptions.html");
         canonicals.put("/rx/exceptions/CompositeException.html",
@@ -95,7 +117,9 @@ public final class AddCanonical {
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/exceptions/MissingBackpressureException.html");
         canonicals.put("/rx/exceptions/OnErrorNotImplementedException.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/exceptions/OnErrorNotImplementedException.html");
+    }
 
+    private static void addFunctionMappings() {
         canonicals.put("/rx/functions/Action0.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Action.html");
         canonicals.put("/rx/functions/Action1.html",
@@ -130,109 +154,89 @@ public final class AddCanonical {
         canonicals.put("/rx/functions/FuncN.html",
                 "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function.html");
 
-        canonicals.put("/rx/observables/ConnectableObservable.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/flowables/ConnectableFlowable.html");
-        canonicals.put("/rx/observables/GroupedObservable.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/flowables/GroupedFlowable.html");
-        canonicals.put("/rx/observables/BlockingObservable.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Flowable.html#blockingIterable%28%29");
-
-        canonicals.put("/rx/observables/SyncOnSubscribe.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/FlowableEmitter.html");
-
-        canonicals.put("/rx/observers/TestObserver.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/observers/TestObserver.html");
-        canonicals.put("/rx/observers/TestSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/subscribers/TestSubscriber.html");
-        canonicals.put("/rx/observers/AsyncCompletableSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/observers/DisposableCompletableObserver.html");
-        canonicals.put("/rx/observers/SafeSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/subscribers/SafeSubscriber.html");
-        canonicals.put("/rx/observers/SerializedObserver.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/observers/SerializedObserver.html");
-        canonicals.put("/rx/observers/SerializedSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/subscribers/SerializedSubscriber.html");
-
-        canonicals.put("/rx/subjects/AsyncSubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/AsyncProcessor.html");
-        canonicals.put("/rx/subjects/PublishSubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/PublishProcessor.html");
-        canonicals.put("/rx/subjects/ReplaySubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/ReplayProcessor.html");
-        canonicals.put("/rx/subjects/BehaviorSubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/BehaviorProcessor.html");
-        canonicals.put("/rx/subjects/UnicastSubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/UnicastProcessor.html");
-        canonicals.put("/rx/subjects/SerializedSubject.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/processors/FlowableProcessor.html#toSerialized%28%29");
-
-        canonicals.put("/rx/subscriptions/BooleanSubscription.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/Disposable.html#empty%28%29");
-        canonicals.put("/rx/subscriptions/CompositeSubscription.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/CompositeDisposable.html");
-        canonicals.put("/rx/subscriptions/MultipleAssignmentSubscription.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/SerialDisposable.html");
-        canonicals.put("/rx/subscriptions/SingleAssignmentSubscription.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/SerialDisposable.html");
-        canonicals.put("/rx/subscriptions/RefCountSubscription.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/SerialDisposable.html");
-        canonicals.put("/rx/subscriptions/Subscriptions.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/Disposable.html");
-
-        // ----------------------------------------------------------------------------------
-
-        canonicals.put("/rx/Single.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Single.html");
-        canonicals.put("/rx/Single.OnSubscribe.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleOnSubscribe.html");
-        canonicals.put("/rx/Single.Operator.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleOperator.html");
-        canonicals.put("/rx/Single.Transformer.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleTransformer.html");
-        canonicals.put("/rx/SingleEmitter.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleEmitter.html");
-        canonicals.put("/rx/SingleSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleObserver.html");
-        canonicals.put("/rx/singles/BlockingSingle.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Single.html#blockingGet%28%29");
-
-        // ----------------------------------------------------------------------------------
-
-        canonicals.put("/rx/Completable.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Completable.html");
-        canonicals.put("/rx/Completable.OnSubscribe.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableOnSubscribe.html");
-        canonicals.put("/rx/Completable.Operator.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableOperator.html");
-        canonicals.put("/rx/Completable.Transformer.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableTransformer.html");
-        canonicals.put("/rx/CompletableEmitter.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableEmitter.html");
-        canonicals.put("/rx/CompletableSubscriber.html",
-                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableObserver.html");
-
-        // ----------------------------------------------------------------------------------
-
-        int failed = 0;
-        for (String urls : canonicals.values()) {
-            System.out.print("Checking: " + urls);
-            try {
-                URL u = new URL(urls);
-                u.openStream().close();
-                System.out.println(" -> Success");
-                Thread.sleep(100);
-            } catch (IOException | InterruptedException ex) {
-                System.err.println(ex);
-                failed++;
-            }
-        }
-
-        if (failed != 0) {
-            throw new RuntimeException("Some url's don't connect!: " + failed);
-        }
-        AddCanonical.canonicals.putAll(canonicals);
+        canonicals.put("/rx/functions/Action.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Action.html");
+        canonicals.put("/rx/functions/BiConsumer.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/BiConsumer.html");
+        canonicals.put("/rx/functions/BiFunction.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/BiFunction.html");
+        canonicals.put("/rx/functions/BooleanSupplier.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/BooleanSupplier.html");
+        canonicals.put("/rx/functions/Consumer.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Consumer.html");
+        canonicals.put("/rx/functions/Function.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function.html");
+        canonicals.put("/rx/functions/Function3.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function3.html");
+        canonicals.put("/rx/functions/Function4.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function4.html");
+        canonicals.put("/rx/functions/Function5.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function5.html");
+        canonicals.put("/rx/functions/Function6.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function6.html");
+        canonicals.put("/rx/functions/Function7.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function7.html");
+        canonicals.put("/rx/functions/Function8.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function8.html");
+        canonicals.put("/rx/functions/Function9.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/Function9.html");
+        canonicals.put("/rx/functions/LongConsumer.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/functions/LongConsumer.html");
     }
 
+    private static void addObservableTypeMappings() {
+        canonicals.put("/rx/internal/operators/NotificationLite.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/internal/util/NotificationLite.html");
+        canonicals.put("/rx/internal/operators/OperatorObserveOn.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/internal/operators/OperatorObserveOn.html");
+        canonicals.put("/rx/internal/operators/BlockingOperatorToFuture.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/internal/operators/BlockingOperatorToFuture.html");
+    }
+
+    private static void addSubscriptionMappings() {
+        canonicals.put("/rx/internal/subscriptions/Subscriptions.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/Disposables.html");
+        canonicals.put("/rx/internal/subscriptions/MultipleAssignmentSubscription.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/SerialDisposable.html");
+    }
+
+    private static void addSingleMappings() {
+        canonicals.put("/rx/internal/util/SubscriptionList.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/disposables/CompositeDisposable.html");
+        canonicals.put("/rx/internal/util/OpenHashSet.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/internal/util/OpenHashSet.html");
+    }
+
+    private static void addCompletableMappings() {
+        canonicals.put("/rx/singles/Single.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Single.html");
+        canonicals.put("/rx/singles/Single.OnSubscribe.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleOnSubscribe.html");
+        canonicals.put("/rx/singles/Single.Operator.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleOperator.html");
+        canonicals.put("/rx/singles/Single.Transformer.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/SingleTransformer.html");
+        canonicals.put("/rx/completable/Completable.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/Completable.html");
+        canonicals.put("/rx/completable/Completable.OnSubscribe.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableOnSubscribe.html");
+        canonicals.put("/rx/completable/Completable.Operator.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableOperator.html");
+        canonicals.put("/rx/completable/Completable.Transformer.html",
+                "http://reactivex.io/RxJava/3.x/javadoc/io/reactivex/rxjava3/core/CompletableTransformer.html");
+    }
+
+    private static void checkUrls() {
+        for (Map.Entry<String, String> entry : canonicals.entrySet()) {
+            try {
+                URL url = new URL(entry.getValue());
+                url.openStream().close();
+                System.out.println(entry.getKey() + " -> " + entry.getValue() + " is valid.");
+            } catch (IOException ex) {
+                System.out.println("Invalid URL for " + entry.getKey() + ": " + entry.getValue());
+            }
+        }
+    }
 
     static void init2x() {
         Map<String, String> canonicals = new HashMap<>();

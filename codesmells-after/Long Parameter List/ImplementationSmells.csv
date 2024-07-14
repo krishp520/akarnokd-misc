@@ -1,0 +1,20 @@
+Project Name,Package Name,Type Name,Method Name,Implementation Smell,Cause of the Smell,Method start line no
+rxjava3,hu.akarnokd.rxjava3,MarblesAddBackground,main,Magic Number,The method contains a magic number: 0xFF000000,11
+rxjava3,hu.akarnokd.rxjava3,MarblesAddBackground,main,Magic Number,The method contains a magic number: 0xFF000000,11
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Long Statement,The length of the statement "Single<List<Item>> remoteListSource=Single.just(List.of(new Item(0`false`false)`new Item(1`false`false)`new Item(2`false`true)`new Item(3`true`false)`new Item(4`true`false)));" is 175.,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Long Statement,The length of the statement "Single<List<Item>> localListSource=Single.just(List.of(new Item(0`false`false)`new Item(1`true`false)`new Item(2`false`false)`new Item(3`false`false)));" is 152.,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Magic Number,The method contains a magic number: 2,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Magic Number,The method contains a magic number: 3,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Magic Number,The method contains a magic number: 4,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Magic Number,The method contains a magic number: 2,9
+rxjava3,hu.akarnokd.rxjava3,SomeCombine,main,Magic Number,The method contains a magic number: 3,9
+rxjava3,hu.akarnokd.rxjava3,OnErrorResumeNextInSequence,main,Long Statement,The length of the statement "sources.add(Observable.<Integer>error(new Exception("" + i)).doOnSubscribe(d -> System.out.println("Subscribed: " + j)));" is 121.,12
+rxjava3,hu.akarnokd.rxjava3,OnErrorResumeNextInSequence,main,Magic Number,The method contains a magic number: 10,12
+rxjava3,hu.akarnokd.rxjava3,OnErrorResumeNextInSequence,main,Magic Number,The method contains a magic number: 5,12
+rxjava3,hu.akarnokd.rxjava3,OnErrorResumeNextInSequence,main,Magic Number,The method contains a magic number: 5,12
+rxjava3,hu.akarnokd.rxjava3,UsingWhen,usingWhen,Long Statement,The length of the statement "return Maybe.fromPublisher(resource).flatMapPublisher(res -> Flowable.using(() -> res`use`resc -> Flowable.fromPublisher(cleanup.apply(resc)).subscribe()`false));" is 162.,28
+rxjava3,hu.akarnokd.rxjava3,UsingWhen,usingWhen,Long Statement,The length of the statement "return Maybe.fromPublisher(params.resource).flatMapPublisher(res -> Flowable.fromPublisher(use.apply(res)).flatMap(v -> Flowable.just(v)`e -> Flowable.fromPublisher(params.onError.apply(res)).ignoreElements().toFlowable()`() -> Flowable.fromPublisher(params.onComplete.apply(res)).ignoreElements().toFlowable()).doOnCancel(() -> Flowable.fromPublisher(params.onCancel.apply(res)).subscribe()));" is 394.,46
+rxjava3,hu.akarnokd.rxjava3,ConcatGroupTest,main,Long Statement,The length of the statement "values.groupBy(e -> e.departmentId).flatMapSingle(v -> v.toList()).concatMapIterable(v -> v).subscribe(System.out::println);" is 124.,29
+rxjava3,hu.akarnokd.rxjava3,ConcatGroupTest,main,Magic Number,The method contains a magic number: 10,29
+rxjava3,hu.akarnokd.rxjava3,ConcatGroupTest,main,Magic Number,The method contains a magic number: 5,29
+rxjava3,hu.akarnokd.rxjava3,ShareExample,main,Magic Number,The method contains a magic number: 2,8

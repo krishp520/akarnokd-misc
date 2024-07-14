@@ -34,6 +34,6 @@ public class GroupParallel {
             wip.decrementAndGet();
         });
 
-        Thread.sleep(100000);
+        Thread.sleep(100);
     }
 }

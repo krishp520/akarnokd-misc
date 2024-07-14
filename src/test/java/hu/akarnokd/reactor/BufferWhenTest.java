@@ -6,6 +6,8 @@ import java.util.concurrent.*;
 import org.junit.Test;
 
 import reactor.core.publisher.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Sinks;
 
 public class BufferWhenTest {
     static class Wrapper {
@@ -36,6 +38,6 @@ public class BufferWhenTest {
             .doOnComplete(processor::tryEmitComplete)
             .subscribe();
 
-        latch.await(10, TimeUnit.MINUTES);
+        latch.await(1, TimeUnit.MINUTES);
     }
 }

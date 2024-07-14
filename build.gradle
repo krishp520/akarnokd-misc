@@ -1,3 +1,5 @@
+import static org.gradle.api.JavaVersion.*
+
 buildscript {
     repositories {
         mavenCentral()

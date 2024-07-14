@@ -1,0 +1,246 @@
+Project Name,Package Name,Type Name,Method Name,Test Smell,Cause of the Smell
+akarnokd-misc,hu.akarnokd.rxjava3,SomeGroupBy1,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,SingleMaybeMock,testGenerateValue,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,BufferStartStop,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,SomeBlocking,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,ZipPattern,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,NestedUsing,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava3,FlatMapLatest,someTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,Timeout800Test,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapCompletableThread,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,PublishRefCountPublishTest,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,PublishRefCountPublishTest,test2,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,RefCountTrackingTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenTest,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,RefCountRace,replayRefCountShallBeThreadSafe,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,SomeSharedFlow,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SomeSharedFlow,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,ZipCrash,testUncaughtException,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ZipCrash,testUncaughtException,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,ZipCrash,testUncaughtExceptionWithFlatMap,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ZipCrash,testUncaughtExceptionWithFlatMap,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,ParallelFileProcessing,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,simple,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 16
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,error,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 3
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,error,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,error2,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 5
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,error2,Exceptional handling,The tool detected the smell in this test method because the test uses try-catch block to assert/fail a check.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,interruptAsync,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableStringInputStreamTest,indexVerify,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 4
+akarnokd-misc,hu.akarnokd.rxjava2,PublishExamples,test1,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,PublishExamples,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,LockstepObserveOnTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,TestDoAfterTerminate,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,DebounceRange,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ObsMergeWithCompTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableMergeTest,nameLoop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ListFlattening,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryEmptyErrorTest,emptyError,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,StageDelays,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,StageDelays,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BufferWithConditionAndTime,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,OnErrorCrash,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,OnErrorCrash,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,CrossTypeBackpressure,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,JavaCompilerBugTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,CustomFlowableTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,CustomSchedulerTimeout,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,JoinPairwise,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DoOnDisposeBug,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,ZipShare,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ZipShare,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,BufferDebounce,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,MultiplyDigits,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BlockingSingleTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BlockingSingleTest,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,TimeoutTask,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BehaviorSubjectSignals,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BehaviorSubjectCombineLatest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,NotInFirst,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,PagingFeedbackLoop,testPager,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DebounceEmpty,debounceOnEmpty,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BufferDelayErrorTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BufferDelayErrorTest,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,TestMockitoCalls,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByOOME,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,MergeAmbTest,testMergeOperator,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,DelayBetween,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,WindowBoundaryIssue,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ReplayOOM,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,IsDisposedTest,test1,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,IsDisposedTest,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,LazyUndeliverable,deferObservable,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,LazyUndeliverable,deferFlowable,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,WindowInterrupted,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SquareSequenceTest,singleJoint,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,MatchIndex,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ThrottleSampleTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ThrottleSampleTest,testObservable,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupSumExample,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DoOnErrorInside,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SequenceEqualsCancelTest,flowable,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,SequenceEqualsCancelTest,observable,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,SequenceEqualsCancelTest,single,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,SequenceEqualsCancelTest,maybe,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,DebounceTimeDrop,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,HookThrowing,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenPlain,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ShareRetry,testIntervalMapShareRetry,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ShareRetry,testIntervalMapShareRetry,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,InterruptFlow2,testInterrupt,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BehaviorMulticast,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleTimeout7514,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleTimeout7514,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,MaxByTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleObserveOnRaceTest,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,TakeUntil,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,CacheParallel,testParallelism,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,PeriodicSchedule,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,AdaptiveDebounce,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleUsingTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ConcatEagerDebounceTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,simple,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,error,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,simpleDedicated,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,errorDedicated,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,simpleRx,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlowableIfNonEmptyComposeTest,errorRx,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,VehicleToFetch,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FromIterableFlatMap,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,TimeoutExample,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,CreateFlatFlat,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DistinctUntilChangedNumericDeltaTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DebounceRailTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,PublishFuncExample,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ListGrouping,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BufferExactDisposeTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FileReaderTest,fileReader,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FileReaderTest,fileReader2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ZipInfinite,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByTimeout,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,LineByLine,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,LineByLine,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,SampleTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DoOnSubscribe2,testFoo,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,Covariance,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ConcatAnomalyTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ItemTestSO,itemTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ConcatRange,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ConcatRange,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DropBlocking,testCreateBackpressureDrop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,DropBlocking,testCreateBackpressureDrop,Ignored test,The tool detected the smell in this test method because the test is excluded from testing.
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapWithTwoErrors,innerCancelled,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapWithTwoErrors,innerCancelled2,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapWithTwoErrors,innerCancelled3,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapWithTwoErrors,innerCancelled4,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,SubjectShareTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ObservableConcatEagerTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenDelay,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SomeClicks,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,WithNextSupplierTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,Amb2Test,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FromCallableConcatMapTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RxLosers,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SwitchMapRace,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava2,BlockingSubscribeOrdering,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,FlatMapDisposeTest,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 7
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test1,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test1,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test2,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test3,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,RetryWhenManyTypeTest,test3,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,BasicSingleCreateTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ReentrantSubject,testReactive,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByFilterTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,TakeUntilTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ExceptionAfterDispose,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,ExceptionAfterDispose,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByTake5,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByTaken,test1,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByTaken,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,GroupByTaken,test3,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleTimeout7515Rx3,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,SingleTimeout7515Rx3,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava2,TrackedRefcount,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava2,BehaviorSubjectCombineLatestTest,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 5
+akarnokd-misc,hu.akarnokd.rxjava2,ConcurrentSingleCache,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactive,SubmissionPublisherTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactive.nio,BasicNIOTest,readFile,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactive.nio,BasicNIOTest,selector,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.iterables,IxNulls,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.iterables,SingletonIteratorTest,contract,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 4
+akarnokd-misc,hu.akarnokd.retrofit2,ResponseBodyNull,responseBodyNull,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ZipRandomTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,CompletableConcat1,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,AutoRemoveSubscription,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,DoOnSubscribe1,testFoo,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,SingleUntil,singleTakeUntil,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,ReplayTimeout,test1x,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ReplayTimeout,test2x,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ReplayTimeout,test2xf,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,CompleteDos,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FromCallCancel,testLoop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FromCallCancel,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,AmbTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ProblemTestCase,testB,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ReduceAnonymous,mutableStateWithStringConcat2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ReduceAnonymous,howLong,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,OutOfOrder3,loop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ListFlatMappingTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,OutOfOrder,loop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,RecurseWithDefer,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,RecurseWithDefer,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,OutOfOrder2,loop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,Replay1RetentionTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,Replay1RetentionTest,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FromToSingle,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FromToSingle,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,FromToSingle,plainSubscribeCheck,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FromToSingle,plainSubscribeCheck,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,ScanReplay,testExpectedReplayBehavior,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ConcatReplayTest,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,OutOfOrder5,loop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,InteropCheck,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,PublishBufferZip,normal,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest2,concatWithTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest2,concatWithTest,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest,concatWithTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest,concatWithTest,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,SingleUnsubscribe,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,CompletableConcat2,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,InterruptFlow,testInterrupt,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FirstAndThrowTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,FirstAndThrowTest,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,TimeoutCancelTest,test,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest3,concatWithTest,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,ConcatWithTest3,concatWithTest,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.rxjava,OutOfOrder4,loop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava,BufferStartEndTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.rxjava.strings,LinesBackpressure,decode,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.queue,MpscLinkedArrayQueueTest,simple,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 11
+akarnokd-misc,hu.akarnokd.queue,MpscLinkedArrayQueueTest,parallel,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.queue,SpscLongArrayQueueTest,simpleUse,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 16
+akarnokd-misc,hu.akarnokd.queue,SpscIntLinkedArrayQueueTest,triggerGrowth,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 10
+akarnokd-misc,hu.akarnokd.queue,SpscIntArrayQueueTest,simpleUse,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 16
+akarnokd-misc,hu.akarnokd.queue,SpscLongLinkedArrayQueueTest,triggerGrowth,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 10
+akarnokd-misc,hu.akarnokd.queue,MpscLinkedArrayQueueV2Test,simple,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 11
+akarnokd-misc,hu.akarnokd.queue,MpscLinkedArrayQueueV2Test,parallel,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+akarnokd-misc,hu.akarnokd.reactor,StreamRemainingTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,SchedulerLeak,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,DoOnSubscribeTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,GroupParallel,parallelGroupComputation,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,BufferWhenTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,RxReactorInteropTest,testFlux,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,RxReactorInteropTest,testMono,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,BufferUntilTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,SchedulerLeakRx,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,FluxMergeTest,nameLoop,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,PickNextIndexed,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,hu.akarnokd.reactor,PickNextIndexed,test,Exceptional handling,The tool detected the smell in this test method because the test throws exception(s) from test (rather than using assertThrows method or expected annotation)
+akarnokd-misc,hu.akarnokd.reactor,BackpressureProblem,fluxCreateDemoElasticScheduler,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,(default package),GroupByConcatMapTest,test2,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,(default package),GroupByConcatMapTest,test1,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,(default package),GroupByConcatMapTest,so,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
+akarnokd-misc,servicetalk,PublishOnTest,test,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.

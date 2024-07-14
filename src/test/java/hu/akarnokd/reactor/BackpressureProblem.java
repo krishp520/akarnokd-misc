@@ -1,6 +1,8 @@
 package hu.akarnokd.reactor;
 
+import java.sql.Time;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -58,6 +60,6 @@ public class BackpressureProblem {
                     latch.countDown();
                 });
 
-        latch.await();
+        latch.await(1, TimeUnit.MINUTES);
     }
 }

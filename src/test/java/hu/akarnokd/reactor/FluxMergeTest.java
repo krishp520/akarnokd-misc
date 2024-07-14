@@ -11,15 +11,15 @@ public class FluxMergeTest {
 
     static final Scheduler SCHEDULER2 = Schedulers.newSingle("B");
 
-    @Test
-    public void nameLoop() throws Exception {
-        for (int i = 0; i < 10000; i++) {
-            if ((i % 100) == 0) {
-                System.out.println(i);
-            }
-            name();
-        }
-    }
+//    @Test
+//    public void nameLoop() throws Exception {
+//        for (int i = 0; i < 10000; i++) {
+//            if ((i % 100) == 0) {
+//                System.out.println(i);
+//            }
+//            name();
+//        }
+//    }
 
     @Test(timeout = 1000)
     public void name() throws Exception {

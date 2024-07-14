@@ -3,6 +3,8 @@ package hu.akarnokd.reactor;
 import org.junit.*;
 
 import reactor.core.publisher.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public class FlatMapMonoVoid {
 
